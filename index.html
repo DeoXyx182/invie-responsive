@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Allerta' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/invie.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" media="(max-width: 800px)" href="css/media-querie.css"/>-->
   </head>
   <body>
@@ -104,10 +105,16 @@
       </div>
     </footer>
     <script>
+      if(window.matchMedia('(max-width: 800px)').matches){
+        console.log('Se cumplió la condicion');
+      } else{
+        console.log('No se cumplió la condicion');
+      }
       var $burgerButton = document.getElementById('burger-button');
       var $menu = document.getElementById('menu');
       $burgerButton.addEventListener('touchstart', function(){
         $menu.classList.toggle('active');
+        $burgerButton.classList.toggle('icon-close');
       });
     </script>
   </body>
