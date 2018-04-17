@@ -37,8 +37,11 @@
     </section>
     <section id="guitarras" class="guitarras contenedor"> <!-- guitarras -->
       <h2>Nuestra guitarras</h2><!-- titulo -->
+      <div class="video-responsive-contenedor">        
+        <iframe class="video-responsive-src" width="560" height="315" src="https://www.youtube.com/embed/R1dW8M4EqYY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
       <article class="guitarra"> <!-- guitarra 1 -->
-        <img class="derecha" src="images/invie-acustica.png" alt="Guitarra Invie Acustica" width="350"/>
+        <img class="derecha" data-src="images/invie-acustica.png" alt="Guitarra Invie Acustica" width="350"/>
         <div class="contenedor-guitarra-a">
           <h3 class="title-b">Invie Acustica</h3>
           <ol>
@@ -49,7 +52,7 @@
         </div>
       </article>
       <article class="guitarra b"> <!-- guitarra 2 -->
-        <img class="izquierda" src="images/invie-classic.png" alt="Guitarra Invie Classic" width="350"/>
+        <img class="izquierda" data-src="images/invie-classic.png" alt="Guitarra Invie Classic" width="350"/>
         <div class="contenedor-guitarra-b">
           <h3 class="title-b">Invie Classic</h3>
           <ol>
@@ -63,7 +66,7 @@
     <footer class="footer">
       <div class="contenedor">
         <div class="contacto">
-          <img src="images/invie-white.png" alt="logotipo blanco"/>
+          <img data-src="images/invie-white.png" alt="logotipo blanco"/>
           <a href="tel:+573024456678"><strong>Telefono</strong> <span>3024456678</span></a>
           <a href="mailto:contacto@invie.com"><strong>E-mail</strong> <span>contacto@invie.com</span></a>
         </div>
@@ -104,17 +107,32 @@
         </form>
       </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
     <script>
-      if(window.matchMedia('(max-width: 800px)').matches){
-        console.log('Se cumplió la condicion');
-      } else{
-        console.log('No se cumplió la condicion');
-      }
+      var consulta = window.matchMedia('(max-width: 800px)');
+      consulta.addListener(mediaQuery);
+
       var $burgerButton = document.getElementById('burger-button');
       var $menu = document.getElementById('menu');
-      $burgerButton.addEventListener('touchstart', function(){
+
+      function toggleMenu(){
         $menu.classList.toggle('active');
         $burgerButton.classList.toggle('icon-close');
+      }
+
+      function mediaQuery(){
+        if(consulta.matches){
+          console.log('Se cumplió la condicion');
+          $burgerButton.addEventListener('touchstart', toggleMenu);
+        } else{
+          console.log('No se cumplió la condicion');
+          $burgerButton.removeEventListener('touchstart', toggleMenu);
+        }
+      }
+      mediaQuery(); // Ejecuta la función al cargar la página por 1a vez
+
+      var bLazy = new Blazy({
+        selector: 'img'
       });
     </script>
   </body>
