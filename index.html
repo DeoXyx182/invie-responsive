@@ -108,6 +108,7 @@
       </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script>
       var consulta = window.matchMedia('(max-width: 800px)');
       consulta.addListener(mediaQuery);
@@ -118,6 +119,12 @@
       function toggleMenu(){
         $menu.classList.toggle('active');
         $burgerButton.classList.toggle('icon-close');
+      }
+      function showMenu(){
+        $menu.classList.add('active');
+      }
+      function hideMenu(){
+        $menu.classList.remove('active');
       }
 
       function mediaQuery(){
@@ -131,9 +138,16 @@
       }
       mediaQuery(); // Ejecuta la función al cargar la página por 1a vez
 
+      // Lazy loading
       var bLazy = new Blazy({
         selector: 'img'
       });
+
+      // Gestos touch 
+      var $body = document.body;
+      var gestos = new Hammer($body);
+      gestos.on('swipeleft', hideMenu);
+      gestos.on('swiperight', showMenu);
     </script>
   </body>
 </html>
