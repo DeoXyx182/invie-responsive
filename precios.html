@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Allerta' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/invie.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <header id="header" class="header background"> <!-- header -->
@@ -12,7 +13,8 @@
         <figure class="logotipo"> <!-- logotipo -->
           <img src="images/invie.png" width="186" height="60" alt="Invie logotipo"/>
         </figure>
-        <nav class="menu"> <!-- menu -->
+        <span class="burger-button icon-menu" id="burger-button"></span>
+        <nav class="menu" id="menu"> <!-- menu -->
           <ul>
             <li>
               <a href="index.html">Home</a>
@@ -100,6 +102,29 @@
           </div>
         </form>
       </div>
-    </footer>
+    </footer>    
+    <script>
+      var consulta = window.matchMedia('(max-width: 800px)');
+      consulta.addListener(mediaQuery);
+
+      var $burgerButton = document.getElementById('burger-button');
+      var $menu = document.getElementById('menu');
+
+      function toggleMenu(){
+        $menu.classList.toggle('active');
+        $burgerButton.classList.toggle('icon-close');
+      }
+
+      function mediaQuery(){
+        if(consulta.matches){
+          console.log('Se cumplió la condicion');
+          $burgerButton.addEventListener('touchstart', toggleMenu);
+        } else{
+          console.log('No se cumplió la condicion');
+          $burgerButton.removeEventListener('touchstart', toggleMenu);
+        }
+      }
+      mediaQuery(); // Ejecuta la función al cargar la página por 1a vez
+    </script>
   </body>
 </html>
