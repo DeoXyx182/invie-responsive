@@ -294,11 +294,22 @@ input:focus, textarea:focus {
   text-align: center;
   background: #395667;
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   left: 20px;
   top: 20px;
   color: white;
   z-index: 3;
+  display: none;
+}
+.video-demo{
+  max-width: 500px;
+  width: 100%;
+  border: 5px solid #3c5b6e;
+}
+.video-demo-contenedor{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
 }
 
 @media screen and (max-width: 800px) {
@@ -329,6 +340,9 @@ input:focus, textarea:focus {
   }
   .guitarras{
     text-align: center;
+  }
+  .video-demo-contenedor{
+    margin-bottom: 30px;
   }
   .izquierda, .derecha{
     float: none;
@@ -400,11 +414,20 @@ input:focus, textarea:focus {
   .menu ul{
     padding: 0;
   }
+  .video-demo{
+    margin: 0 10px;
+  }
 }
 
 @media screen and (max-width: 500px){
+  .precios .header .logotipo{
+    margin: 50px 0;
+  }
   .portada .contenedor{
     position: static;
+  }
+  .portada .button{
+    display: block;
   }
   .header{
     position: static;
@@ -414,7 +437,7 @@ input:focus, textarea:focus {
   }
   .menu{
     background: rgba(255, 60, 88, .8);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -100%;
     bottom: 0;
@@ -460,6 +483,15 @@ input:focus, textarea:focus {
   }
   .contenedor-guitarra-b{
     padding: 0;
+  }
+  .burger-button{
+    display: block;
+  }
+  .video-demo-contenedor{
+    margin: 0 10px 30px 10px;
+  }
+  .col2{
+    align-items: stretch;
   }
 }
 .video-responsive-contenedor{
